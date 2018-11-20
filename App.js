@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import MainScreen from './src/screens';
+import RooteRouter from './src/routers';
 
 export default class App extends React.Component {
 
@@ -8,9 +9,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <MainScreen />
-      </View>
+      <RooteRouter />
     );
   }
 }

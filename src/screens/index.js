@@ -10,8 +10,7 @@ class index extends Component {
       <View>
         <Text>Main Screen</Text>
       </View>
-    )
+    );
   }
 }
-
 export default index;
