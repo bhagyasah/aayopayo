@@ -21,11 +21,12 @@ const contentElement = (content, idx, toggleMenu) => {
 };
 
 const DrawerContent = (props) =>  {
-  // console.log('state in Drawercontent', props.toggleMenu);
-  const { contents } = props;
+
+  // console.log('state in Drawercontent', props.navigation.navigate);
+  const { contents, navigation } = props;
   return (
     <View>
-      {contents.map((content, idx) => contentElement(content, idx))}
+      {contents.map((content, idx) => contentElement(content, idx, navigation))}
     </View>
   );
 };

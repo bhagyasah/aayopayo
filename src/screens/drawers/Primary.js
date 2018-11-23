@@ -3,8 +3,8 @@ import { SafeAreaView } from 'react-native';
 import {
   Container, Content,
 } from 'native-base';
-import { DrawerHeader, DrawerContent, DrawerFooter } from '../../components/drawer_menu';
-import { header, contents, footer } from './PrimaryStructure';
+import { DrawerHeader, DrawerContent } from '../../components/drawer_menu';
+import { header, contents } from './PrimaryStructure';
 
 class MenuContent extends Component {
   state ={};
@@ -16,8 +16,6 @@ class MenuContent extends Component {
           <DrawerHeader header={header} {...this.props} />
           <Content>
             <DrawerContent contents={contents()} {...this.props} />
-            {/* <DrawerItems {...this.props} /> */}
-            <DrawerFooter footer={footer} />
           </Content>
         </Container>
       </SafeAreaView>

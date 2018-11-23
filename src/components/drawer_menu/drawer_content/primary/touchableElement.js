@@ -2,11 +2,11 @@ import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { Icon } from 'native-base';
 
-const touchableElement = (content, id, toggleMenu) => {
-  // console.log('onpress func in touchable compenent', content, id, toggleMenu);
+const touchableElement = (content, id, navigation) => {
+  const navigationState = content.label.replace(/\s/g, '');
   return (
     <TouchableOpacity
-      onPress={() => toggleMenu(content.label)}
+      onPress={() => navigation.navigate(navigationState)}
       key={content.label}
       style={{
         padding: 15,

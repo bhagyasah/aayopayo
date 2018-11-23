@@ -3,7 +3,7 @@ import { ImageBackground, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  Header, Left, Icon, Body, Title, Text, View,
+  Header, Left, Icon, Body, Title, Text, View, Thumbnail,
 } from 'native-base';
 import {
   APP_COLOR, APP_TITLE_TEXT_COLOR, SCREEN_HEIGHT,SCREEN_WIDTH
@@ -18,8 +18,9 @@ class DrawerHeader extends Component {
     const { header, contentMessage } = this.props;
     if (header.title === 'Menu') {
       return (
-        <ImageBackground
+        <Image
           source={header.logo}
+          resizeMode="stretch"
           style={{
             width: SCREEN_WIDTH * 0.9,
             height: SCREEN_HEIGHT * 0.2,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, StatusBar } from 'react-native';
+import { StyleSheet, View, StatusBar, Platform } from 'react-native';
 import MainScreen from './src/screens';
 import RootRouter from './src/routers';
 
@@ -9,7 +9,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={{ marginTop: StatusBar.currentHeight, flex: 1 }}>
+      <View style={{ marginTop: Platform.OS !== 'ios' ? StatusBar.currentHeight : 0, flex: 1 }}>
         <RootRouter />
       </View>
     );
