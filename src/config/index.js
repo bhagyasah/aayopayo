@@ -1,5 +1,7 @@
 import { Dimensions } from 'react-native';
 
+export const BASE_URL = 'https://www.aayopayo.com/api';
+
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export const SCREEN_HEIGHT = Dimensions.get('window').height;

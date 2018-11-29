@@ -20,8 +20,7 @@ const contentElement = (content, idx, toggleMenu) => {
   }
 };
 
-const DrawerContent = (props) =>  {
-
+const DrawerContent = (props) => {
   // console.log('state in Drawercontent', props.navigation.navigate);
   const { contents, navigation } = props;
   return (

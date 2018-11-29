@@ -1,19 +1,25 @@
 
 import { createDrawerNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
-import RegisterNewAccount from '../screens/register-new-account';
 import ContactUs from '../screens/contactus/ContactUs';
 import MainDrawer from '../screens/drawers/index';
 import MainScreen from '../screens';
 import TermsAndPrivacy from '../screens/term-and-privacy/TermsAndPrivacy';
 import AboutUs from '../screens/aboutus/AboutUs';
+import AcountDetails from '../screens/register-new-account/AcountDetails';
+import PersonalDetails from '../screens/register-new-account/PersonalDetails';
+import SignIn from '../screens/sign-in';
+import ForgotPassword from '../screens/forgot-password';
 import { SCREEN_WIDTH } from '../config';
 
 const stackNavigator = createStackNavigator({
   MainScreen,
-  RegisterNewAccount,
+  RegisterNewAccount: AcountDetails,
+  PersonalDetails,
   AboutUs,
   ContactUs,
   TermsAndPrivacy,
+  SignIn,
+  ForgotPassword,
 });
 
 const RootRouter = createDrawerNavigator({
