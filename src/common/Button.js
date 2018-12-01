@@ -8,9 +8,10 @@ const CustomButtom = ({
   content, navigation, registerForm, buttonPressHandler,
 }) => (
   <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-    <View style={{ justifyContent: 'center', alignItems: 'center', height: 50 }}>
-      { registerForm.error !== '' ? <Text style={{ color: 'red', fontSize: 20, position: 'absolute' }}>{registerForm.error}</Text> : null }
+    <View style={{ justifyContent: 'center', alignItems: 'center', height: 50, padding: 10 }}>
+      { registerForm.error !== '' ? <Text style={{ color: 'red', position: 'absolute' }}>{registerForm.error}</Text> : null }
       {registerForm.loading ? <Spinner size="large" /> : null}
+      {registerForm.success !== '' ? <Text style={{ color: 'green', position: 'absolute' }}>{registerForm.success}</Text> : null }
     </View>
     <Button
       success

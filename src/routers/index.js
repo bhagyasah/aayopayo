@@ -9,6 +9,7 @@ import AcountDetails from '../screens/register-new-account/AcountDetails';
 import PersonalDetails from '../screens/register-new-account/PersonalDetails';
 import SignIn from '../screens/sign-in';
 import ForgotPassword from '../screens/forgot-password';
+import MyAccount from '../screens/tab/myaccount';
 import { SCREEN_WIDTH } from '../config';
 
 const stackNavigator = createStackNavigator({
@@ -20,6 +21,7 @@ const stackNavigator = createStackNavigator({
   TermsAndPrivacy,
   SignIn,
   ForgotPassword,
+  MyAccount,
 });
 
 const RootRouter = createDrawerNavigator({

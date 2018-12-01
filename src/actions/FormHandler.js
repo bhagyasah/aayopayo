@@ -1,7 +1,7 @@
 
 import { UPDATE_FORM_VALUE } from './types';
 import { nextButtonPressHelper, submitButtonPressHelper, agreeCheckBoxPressHelper } from './helper-functions/registerFormHelper';
-import { signInButtonPressHandler, rememberCheckBoxPressHelper, resetButtonPressHelper } from './helper-functions/signInFormHandler';
+import { signInButtonPressHandler, rememberCheckBoxPressHelper, resetButtonPressHelper, submitMessageButtonPressHelper, changePasswordButtonPressHelper } from './helper-functions/signInFormHandler';
 
 export const updateFormValue = (key, value) => (
   {
@@ -24,6 +24,12 @@ export const buttonPressHandler = (content, navigation) => (
         break;
       case 'ResetPassword':
         resetButtonPressHelper(getState(), dispatch, navigation, updateFormValue);
+        break;
+      case 'SubmitMessage':
+        submitMessageButtonPressHelper(getState(), dispatch, navigation, updateFormValue);
+        break;
+      case 'ChangePassword':
+        changePasswordButtonPressHelper(getState(), dispatch, navigation, updateFormValue);
         break;
       default:
         return null;

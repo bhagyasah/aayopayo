@@ -9,6 +9,7 @@ const INITIAL_REGISTER_FORM_STATE = {
   state: 'state2',
   password: '',
   cpassword: '',
+  opassword: '',
   dob: '',
   agree: false,
   message: '',

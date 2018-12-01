@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppLoading } from 'expo';
 import nativeBaseHandler from '../common/nativeBaseHander';
-import TabScreen from './tab';
+import TabScreen from './tab/home';
 
 class index extends Component {
 

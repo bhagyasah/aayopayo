@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import {
   Container, Header, Label, Left, Badge, Body, Button, Icon, Title, Right, Text, Tabs, Tab,
 } from 'native-base';
-import { APP_COLOR, APP_TITLE_TEXT_COLOR } from '../../config';
+import { APP_COLOR, APP_TITLE_TEXT_COLOR } from '../../../config';
 import Live from './Live';
 import Closed from './Closed';
 import Upcoming from './Upcoming';
