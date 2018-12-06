@@ -1,10 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Header, Left, Button, Icon, Body, Title, Right, Text, Badge,
 } from 'native-base';
 import { APP_COLOR, APP_TITLE_TEXT_COLOR } from '../../../../config';
 
-export default ({ navigation, modal, updateModalValue }) => (
+const unreadNotifications = (modal) =>  {
+  return modal.content.reduce((total, next) => (!next.readStatus ? total + 1 : total), 0);
+};
+
+const CustomHeader = ({ navigation, updateModalValue, fetchNotifications, modal }) => (
   <Header style={{ backgroundColor: APP_COLOR }}>
     <Left>
       <Button transparent onPress={() => navigation.openDrawer()}>
@@ -28,20 +33,32 @@ export default ({ navigation, modal, updateModalValue }) => (
       </Button>
       <Button
         transparent
-        onPress={() => updateModalValue('notificationModalshow', true)}
+        onPress={() => fetchNotifications()}
         style={{ marginRight: -10 }}
       >
         <Icon style={{ color: APP_TITLE_TEXT_COLOR, fontSize: 25 }} name="notifications" />
-        <Badge
-          style={{
-            backgroundColor: 'red', height: 20, justifyContent: 'center', alignItems: 'center',
-          }}
-        >
-          <Text style={{ fontSize: 10, color: 'white' }}>
-            1
-          </Text>
-        </Badge>
+        { unreadNotifications(modal) !== 0
+          ? (
+            <Badge
+              style={{
+                backgroundColor: 'red', height: 20, justifyContent: 'center', alignItems: 'center',
+              }}
+            >
+              <Text style={{ fontSize: 10, color: 'white' }}>
+                {unreadNotifications(modal)}
+              </Text>
+            </Badge>
+          )
+          : null
+        }
       </Button>
     </Right>
   </Header>
 );
+
+CustomHeader.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+  updateModalValue: PropTypes.func.isRequired,
+};
+
+export default CustomHeader;

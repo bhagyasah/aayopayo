@@ -1,8 +1,11 @@
 import { UPDATE_MODAL_VALUE } from '../actions/types';
 
 const INITIAL_MODAL_STATE = {
-  notifiationModalShow: false,
-  addIconModalShow: false,
+  modalShow: false,
+  readNotificationSpinner: null,
+  loading: false,
+  error: '',
+  content: [],
 };
 
 export default (state = INITIAL_MODAL_STATE, actions) => {

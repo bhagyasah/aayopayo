@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import AddCoin from '../../model/add-coin';
 
 class Live extends Component {
 
@@ -8,7 +9,7 @@ class Live extends Component {
   render() {
     return (
       <View style={styles.textSyle}>
-        <Text> Live Screen</Text>
+        <AddCoin />
       </View>
     );
   }
