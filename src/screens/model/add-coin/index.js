@@ -8,7 +8,7 @@ class CustomModal extends Component {
   render() {
     return (
       // <Modal {...this.props} title="Notifications">
-        <Content {...this.props} />
+      <Content {...this.props} />
       // </Modal>
     );
   }

@@ -10,10 +10,6 @@ export default () => (
       shouldPlay
       repeat
       resizeMode="cover"
-      muted
-      // volume={1.0}
-      // rate={1.0}
-      // ignoreSilentSwitch="obey"
     />
   </View>
 );
