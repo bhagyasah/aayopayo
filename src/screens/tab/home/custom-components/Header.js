@@ -9,7 +9,7 @@ const unreadNotifications = (modal) =>  {
   return modal.content.reduce((total, next) => (!next.readStatus ? total + 1 : total), 0);
 };
 
-const CustomHeader = ({ navigation, updateModalValue, fetchNotifications, modal }) => (
+const CustomHeader = ({ navigation, updateModalValue, fetchNotifications, modal, addCoinHandler}) => (
   <Header style={{ backgroundColor: APP_COLOR }}>
     <Left>
       <Button transparent onPress={() => navigation.openDrawer()}>
@@ -25,7 +25,7 @@ const CustomHeader = ({ navigation, updateModalValue, fetchNotifications, modal 
       <Button
         style={{ backgroundColor: APP_COLOR, marginRight: -15 }}
         transparent
-        // onPress={() => Alert.alert('Show vedio add')}
+        onPress={() => addCoinHandler()}
       >
         <Icon name="logo-usd" style={{ color: 'yellow' }} />
         <Text style={{ color: 'yellow', maxWidth: 150 }}>{` Coins: ${12345}`}</Text>

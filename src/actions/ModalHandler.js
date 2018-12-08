@@ -62,7 +62,7 @@ export const updateModalValue = (key, value) => ({
 
 export const fetchNotifications = () => {
   return async (dispatch, getState) => {
-    dispatch(updateModalValue('modalShow', true));
+    dispatch(updateModalValue('modalNotificationShow', true));
     dispatch(updateModalValue('loading', true));
     try {
       const response = await axios.post(`${BASE_URL}/fetchNotification.php`, { SESSION: 'fsjfdlafjlajaj' });
@@ -91,6 +91,24 @@ export const markNotificationRead = (id) => {
       }
     } catch {
       dispatch(updateModalValue('error', 'Faild to fetch data'));
+    }
+  };
+};
+
+export const addCoinHandler = () => {
+  // console.log('add coin show is called');
+  return async (dispatch, getState) => {
+    dispatch(updateModalValue('modalAddCoinShow', true));
+    dispatch(updateModalValue('loading', true));
+    try {
+      const response = await axios.post(`${BASE_URL}/fetchAddCoinVedioUrl.php`, { SESSION: 'fsjfdlafjlajaj' });
+      dispatch(updateModalValue('loading', false));
+      dispatch(updateModalValue('addCoinVideoUrl', 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'));
+      if (response.data.status === 'success') {
+        dispatch(updateModalValue('content', response.data));
+      }
+    } catch (e) {
+      dispatch(updateModalValue('error', 'Faild to fetch VedioUrl'));
     }
   };
 };

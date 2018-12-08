@@ -9,6 +9,7 @@ import Closed from './Closed';
 import Upcoming from './Upcoming';
 import Header from './custom-components/Header';
 import NotificationModal from '../../model/notification';
+import AddCoin from '../../model/add-coin';
 import * as actions from '../../../actions';
 
 class index extends Component {
@@ -30,6 +31,7 @@ class index extends Component {
           </Tab>
         </Tabs>
         <NotificationModal {...this.props} />
+        <AddCoin {...this.props} />
       </Container>
     );
   }

@@ -1,9 +1,11 @@
 import { UPDATE_MODAL_VALUE } from '../actions/types';
 
 const INITIAL_MODAL_STATE = {
-  modalShow: false,
+  modalNotificationShow: false,
+  modalAddCoinShow: false,
   readNotificationSpinner: null,
   loading: false,
+  addCoinVideoUrl: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
   error: '',
   content: [],
 };

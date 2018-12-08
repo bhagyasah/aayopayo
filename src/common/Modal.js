@@ -17,13 +17,13 @@ const renderModalContent = (children, modal) => {
 };
 
 const CustomModal = ({
-  modal, updateModalValue, children, title,
+  modal, updateModalValue, children, title, modalShow,
 }) => (
   <Modal
-    isVisible={modal.modalShow}
+    isVisible={modal[modalShow]}
     animationIn="slideInUp"
     animationOut="slideOutDown"
-    onSwipe={() => updateModalValue('modalShow', false)}
+    onSwipe={() => updateModalValue(modalShow, false)}
     swipeDirection="down"
     style={styles.centerModal} //eslint-disable-line
   >
@@ -36,7 +36,7 @@ const CustomModal = ({
         </Body>
         <Right>
           <Icon
-            onPress={() => updateModalValue('modalShow', false)}
+            onPress={() => updateModalValue(modalShow, false)}
             name="close"
             style={{ color: '#fff' }}
           />
@@ -71,5 +71,6 @@ CustomModal.propTypes = {
   updateModalValue: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
   title: PropTypes.string.isRequired,
+  modalShow: PropTypes.string.isRequired,
 };
 export default CustomModal;
