@@ -19,7 +19,7 @@ class Index extends Component {
 
   render() {
     const { navigation } = this.props;
-    // console.log(this.props.registerForm);
+    console.log(this.props.registerForm);
     return (
       <Container>
         {renderScreenHeader('Sign In', navigation)}

@@ -112,3 +112,18 @@ export const addCoinHandler = () => {
     }
   };
 };
+
+export const addCoinSuccess = () => {
+  // console.log('addCoinSuccess called');
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/addCoin.php`, { SESSION: 'jfdlkjfalkjfaslja' });
+      dispatch(updateModalValue('addCoinSuccess', true));
+      if (response.data.status === 'success') {
+        dispatch(updateModalValue('addCoinSuccess', true));
+      }
+    } catch (e) {
+      dispatch(updateModalValue('error', 'Failed to add coins'));
+    }
+  };
+};

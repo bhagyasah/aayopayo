@@ -1,8 +1,9 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, ScrollView } from 'react-native';
 import {
   View, Text, Spinner,
 } from 'native-base';
+import PropTypes from 'prop-types';
 
 const renderNotification = (notifications, idx, modal, markNotificationRead) => (
   <TouchableOpacity
@@ -35,8 +36,14 @@ const renderNotification = (notifications, idx, modal, markNotificationRead) => 
   </TouchableOpacity>
 );
 
-export default CustomContent = ({ modal, markNotificationRead }) => (
-  <View>
+const CustomContent = ({ modal, markNotificationRead }) => (
+  <ScrollView showsVerticalScrollIndicator={false}>
     {modal.content.map((notification, idx) => renderNotification(notification, idx, modal, markNotificationRead))}
-  </View>
+  </ScrollView>
 );
+
+CustomContent.propTypes = {
+  modal: PropTypes.objectOf(PropTypes.any).isRequired,
+  markNotificationRead: PropTypes.func.isRequired,
+}
+export default CustomContent;

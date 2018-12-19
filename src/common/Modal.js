@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import {
   View, Header, Body, Right, Title, Text, Icon, Spinner,
@@ -42,20 +42,16 @@ const CustomModal = ({
           />
         </Right>
       </Header>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-      >
-        {renderModalContent(children, modal)}
-      </ScrollView>
+      {renderModalContent(children, modal)}
     </View>
   </Modal>
 );
 
 const styles = StyleSheet.create({
   centerModal: {
-    justifyContent: 'center',
-    margin: 0,
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // margin: 0,
+    // alignItems: 'center',
   },
   contentStyle: {
     maxHeight: SCREEN_HEIGHT * 0.5,

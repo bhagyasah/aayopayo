@@ -6,6 +6,7 @@ const INITIAL_MODAL_STATE = {
   readNotificationSpinner: null,
   loading: false,
   addCoinVideoUrl: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+  addCoinSuccess: false,
   error: '',
   content: [],
 };
