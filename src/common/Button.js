@@ -14,6 +14,7 @@ const CustomButtom = ({
       {registerForm.success !== '' ? <Text style={{ color: 'green', position: 'absolute' }}>{registerForm.success}</Text> : null }
     </View>
     <Button
+      disabled={!registerForm.internetStatus || registerForm.loading}
       success
       full
       onPress={() => buttonPressHandler(content, navigation)}

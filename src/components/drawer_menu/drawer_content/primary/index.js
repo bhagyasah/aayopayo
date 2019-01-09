@@ -7,25 +7,25 @@ import staticElement from './staticElement';
 import separatorElement from './separatorElement';
 // import * as actions from '../../../../actions';
 
-const contentElement = (content, idx, toggleMenu) => {
+const contentElement = (content, idx, toggleMenu, props) => {
   switch (content.element) {
     case 'static':
-      return staticElement(content, idx);
+      return staticElement(content, idx, props);
     case 'touchable':
-      return touchableElement(content, idx, toggleMenu);
+      return touchableElement(content, idx, toggleMenu, props);
     case 'separator':
-      return separatorElement(content, idx);
+      return separatorElement(content, idx, props);
     default:
       return null;
   }
 };
 
 const DrawerContent = (props) => {
-  // console.log('state in Drawercontent', props.navigation.navigate);
-  const { contents, navigation } = props;
+  // console.log('state in Drawercontent', props);
+  const { contents, navigation, } = props;
   return (
     <View>
-      {contents.map((content, idx) => contentElement(content, idx, navigation))}
+      {contents.map((content, idx) => contentElement(content, idx, navigation, props))}
     </View>
   );
 };

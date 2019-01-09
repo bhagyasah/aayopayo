@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import LiveCard from './live/LiveCard';
 
 class Live extends Component {
-
-  state={};
+  state = {};
 
   render() {
+    const { main } = this.props;
+    console.log('state in mainreducer', main);
     return (
-      <View style={styles.textSyle}>
-        <Text>Live Screen</Text>
+      <View style={{ padding: 10 }}>
+        {main.liveProduct.map((product, idx) => <LiveCard key={idx} product={product} {...this.props} />)}
       </View>
     );
   }

@@ -98,6 +98,7 @@ export const markNotificationRead = (id) => {
 export const addCoinHandler = () => {
   // console.log('add coin show is called');
   return async (dispatch, getState) => {
+    dispatch(updateModalValue('addCoinSuccess', false));
     dispatch(updateModalValue('modalAddCoinShow', true));
     dispatch(updateModalValue('loading', true));
     try {

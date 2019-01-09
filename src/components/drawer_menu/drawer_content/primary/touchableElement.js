@@ -2,11 +2,11 @@ import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { Icon } from 'native-base';
 
-const touchableElement = (content, id, navigation) => {
+const touchableElement = (content, id, navigation, props) => {
   const navigationState = content.label.replace(/\s/g, '');
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(navigationState)}
+      onPress={() => (navigationState !== 'SignOut' ? navigation.navigate(navigationState) : props.buttonPressHandler(content))}
       key={content.label}
       style={{
         padding: 15,

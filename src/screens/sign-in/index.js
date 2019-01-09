@@ -8,6 +8,7 @@ import renderScreenHeader from '../../common/ScreenHeader';
 import Form from '../../common/Form';
 import sinInStructure from './signInStructure';
 import * as actions from '../../actions';
+import ShowInternetConnectionInfo from '../../common/ShowInternetConnectionInfo';
 
 class Index extends Component {
 
@@ -19,11 +20,12 @@ class Index extends Component {
 
   render() {
     const { navigation } = this.props;
-    console.log(this.props.registerForm);
+    // console.log(this.props.registerForm);
     return (
       <Container>
         {renderScreenHeader('Sign In', navigation)}
         <Content>
+          <ShowInternetConnectionInfo {...this.props} />
           <View>
             <Form contents={sinInStructure()} {...this.props} />
             <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>

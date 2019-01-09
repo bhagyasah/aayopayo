@@ -1,7 +1,7 @@
 import { UPDATE_FORM_VALUE } from '../actions/types';
 
 const INITIAL_REGISTER_FORM_STATE = {
-  key: 'aayokey',
+  key: 'AAYOPAAYOHULLAWERQUIPCSTHKVXEMV',
   full_name: '',
   email: '',
   gender: 'male',
@@ -17,6 +17,9 @@ const INITIAL_REGISTER_FORM_STATE = {
   error: '',
   loading: false,
   success: false,
+  loginSuccess: false,
+  internetStatus: null,
+  asyncLoading: false,
 };
 
 export default (state = INITIAL_REGISTER_FORM_STATE, actions) => {

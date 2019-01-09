@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { AppLoading } from 'expo';
+import { connect } from 'react-redux';
+import { Spinner } from 'native-base';
 import nativeBaseHandler from '../common/nativeBaseHander';
 import TabScreen from './tab/home';
+import * as actions from '../actions';
+import { getAsyncData } from '../common/AsycstrorageAaayopayo';
 
 class index extends Component {
 
@@ -12,9 +16,15 @@ class index extends Component {
   state={ renderMain: true };
 
   async componentWillMount() {
-    // const { fetchInitialAppData } = this.props;
+    const { updateFormValue, fetchProduct } = this.props;
     await nativeBaseHandler();
-    // fetchInitialAppData();
+    await fetchProduct();
+    const loginStatus = await getAsyncData('LOGIN_STATUS');
+    if (loginStatus === 'true') {
+      updateFormValue('loginStatus', true);
+    } else {
+      updateFormValue('loginStatus', false);
+    }
     this.setState({ renderMain: false });
   }
 
@@ -28,4 +38,7 @@ class index extends Component {
     );
   }
 }
-export default index;
+
+const mapStateToProps = ({ registerForm }) => registerForm;
+
+export default connect(mapStateToProps, { ...actions })(index);

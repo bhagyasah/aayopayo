@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import UpcomingCard from './upcoming/UpcomingCard';
 
 class Closed extends Component {
 
-  state={};
+  state = {};
 
   render() {
+    const { main } = this.props;
     return (
-      <View style={styles.textSyle}>
-        <Text> Closed Screen</Text>
-      </View>
+      <ScrollView>
+        <View style={{ padding: 10 }}>
+          {main.closedProduct.map((product, idx) => <UpcomingCard key={idx} product={product} />)}
+        </View>
+      </ScrollView>
     );
   }
 }

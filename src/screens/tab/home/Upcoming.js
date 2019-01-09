@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import UpcomingCard from './upcoming/UpcomingCard';
 
 class Upcoming extends Component {
 
   state={};
 
   render() {
+    const { main } = this.props;
     return (
-      <View style={styles.textSyle}>
-        <Text> Upcoming Screen</Text>
+      <View style={{ padding: 10 }}>
+        {main.upcomingProduct.map((product, idx) => <UpcomingCard key={idx} product={product} />)}
       </View>
     );
   }

@@ -11,6 +11,7 @@ import Header from './custom-components/Header';
 import NotificationModal from '../../model/notification';
 import AddCoin from '../../model/add-coin';
 import * as actions from '../../../actions';
+import ProductDetails from './custom-components/product-details';
 
 class index extends Component {
   state = {};
@@ -21,17 +22,18 @@ class index extends Component {
         <Header {...this.props} />
         <Tabs tabBarBackgroundColor={APP_COLOR} tabBarPosition="bottom">
           <Tab heading="Live" tabStyle={{ backgroundColor: APP_COLOR }} activeTabStyle={{ backgroundColor: APP_COLOR }}>
-            <Live />
+            <Live {...this.props} />
           </Tab>
           <Tab heading="Upcoming" tabStyle={{ backgroundColor: APP_COLOR }} activeTabStyle={{ backgroundColor: APP_COLOR }}>
-            <Upcoming />
+            <Upcoming {...this.props} />
           </Tab>
           <Tab heading="Closed" tabStyle={{ backgroundColor: APP_COLOR }} activeTabStyle={{ backgroundColor: APP_COLOR }}>
-            <Closed />
+            <Closed {...this.props} />
           </Tab>
         </Tabs>
         <NotificationModal {...this.props} />
         <AddCoin {...this.props} />
+        <ProductDetails {...this.props} />
       </Container>
     );
   }

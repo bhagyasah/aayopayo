@@ -1,6 +1,6 @@
 import axios from 'axios';
 import querystring from 'querystring';
-import { setAsyncData } from '../../common/AsycstrorageAaayopayo';
+import { setAsyncData, multiSetAsync } from '../../common/AsycstrorageAaayopayo';
 import { BASE_URL } from '../../config';
 
 export const signInButtonPressHandler = async (state, dispatch, navigation, updateFormValue) => {
@@ -10,14 +10,26 @@ export const signInButtonPressHandler = async (state, dispatch, navigation, upda
   if ((email !== '') && (password !== '')) {
     dispatch(updateFormValue('loading', true));
     try {
-      const response = await axios.post(`${BASE_URL}/login.php`, querystring.stringify({ email, password, key }));
+      const response = await axios.post('https://www.aayopayo.com/app/app_login.php', querystring.stringify({ email, password, auth: key, type: 'user' }));
       dispatch(updateFormValue('loading', false));
-      // console.log(response.data);
-      if (response.data.status === 'success') {
-        setAsyncData('loginStatus', true, dispatch, updateFormValue);
+      const { data } = response;
+      // console.log('login response data', data);
+      if (!data.error) {
+        await multiSetAsync([
+          ['LOGIN_STATUS', 'true'],
+          ['USER_NAME', data.fname],
+          ['USER_EMAIL', data.email],
+          ['USER_ID', `${data.uid}`],
+          ['LOGIN_SESSION', data.ltext],
+          ['USER_PHONE', `${data.phone}`],
+        ]);
+        dispatch(updateFormValue('email', ''));
+        dispatch(updateFormValue('password', ''));
+        dispatch(updateFormValue('remember', false));
+        dispatch(updateFormValue('loginStatus', true));
         navigation.navigate('MainScreen');
         if (remember) {
-          setAsyncData('loginRemember', true, dispatch, updateFormValue);
+          setAsyncData('LOGIN_REMEMBER', true, dispatch, updateFormValue);
         }
       } else {
         dispatch(updateFormValue('error', response.data.message));
@@ -106,4 +118,15 @@ export const changePasswordButtonPressHelper = async (
   } else {
     dispatch(updateFormValue('error', 'Fill all the fields'));
   }
+};
+
+export const signOutButtonPressHandler = async (
+  state, dispatch, navigation, updateFormValue,
+) => {
+  // console.log(navigation);
+  dispatch(updateFormValue('asyncLoading', true));
+  await setAsyncData('LOGIN_STATUS', 'flase');
+  dispatch(updateFormValue('asyncLoading', false));
+  dispatch(updateFormValue('loginStatus', false));
+  // navigation.navigate.closeDrawer();
 };

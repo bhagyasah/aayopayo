@@ -1,26 +1,31 @@
 import { AsyncStorage } from 'react-native';
 
-export const setAsyncData = async (key, value, dispatch, updateFormValue) => {
-
-  dispatch(updateFormValue('error', ''));
-  dispatch(updateFormValue('loading', true));
+export const setAsyncData = async (key, value) => {
   try {
     await AsyncStorage.setItem(key, value);
-    dispatch(updateFormValue('loading', false));
   } catch (e) {
-    dispatch(updateFormValue('error', 'Field to Store data'));
+    return e;
   }
 };
 
-export const getAsyncData = async (key, value, dispatch, updateFormValue) => {
-  let asyncValue = null;
-  dispatch(updateFormValue('error', ''));
-  dispatch(updateFormValue('loading', true));
+export const getAsyncData = async (key) => {
   try {
-    asyncValue = await AsyncStorage.getItem(key, value);
-    dispatch(updateFormValue('loading', false));
+    const asyncValue = await AsyncStorage.getItem(key);
+    return asyncValue;
   } catch (e) {
-    dispatch(updateFormValue('error', 'Field to get data'));
+    return e;
   }
-  return asyncValue;
+};
+
+export const updateAsyncData = async (key, value) => {
+  await AsyncStorage.mergeItem(key, value);
+};
+
+export const multiSetAsync = async (keysValues) => {
+  await AsyncStorage.multiSet(keysValues);
+};
+
+export const multiGetAsync = async (keys) => {
+  const res = AsyncStorage.multiGet(keys);
+  return res;
 };

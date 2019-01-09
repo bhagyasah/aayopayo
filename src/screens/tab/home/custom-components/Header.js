@@ -9,7 +9,7 @@ const unreadNotifications = (modal) =>  {
   return modal.content.reduce((total, next) => (!next.readStatus ? total + 1 : total), 0);
 };
 
-const CustomHeader = ({ navigation, updateModalValue, fetchNotifications, modal, addCoinHandler}) => (
+const CustomHeader = ({ navigation, updateModalValue, fetchNotifications, modal, addCoinHandler, registerForm }) => (
   <Header style={{ backgroundColor: APP_COLOR }}>
     <Left>
       <Button transparent onPress={() => navigation.openDrawer()}>
@@ -21,6 +21,7 @@ const CustomHeader = ({ navigation, updateModalValue, fetchNotifications, modal,
         AayoPaayo
       </Title>
     </Body>
+    {registerForm.loginStatus && (
     <Right>
       <Button
         style={{ backgroundColor: APP_COLOR, marginRight: -15 }}
@@ -53,6 +54,7 @@ const CustomHeader = ({ navigation, updateModalValue, fetchNotifications, modal,
         }
       </Button>
     </Right>
+    )}
   </Header>
 );
 

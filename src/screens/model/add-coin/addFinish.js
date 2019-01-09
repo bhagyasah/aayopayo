@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Spinner, Button } from 'native-base';
 import PropTypes from 'prop-types';
-import { SCREEN_HEIGHT, SCREEN_WIDTH, APP_COLOR } from '../../../config';
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../config';
 
-const CustomAddFinish =  ({ modal, updateModalValue }) => {
+const CustomAddFinish = ({ modal, updateModalValue, addCoinHandler }) => {
   // console.log('props in addFinish', props);
   const { addCoinSuccess } = modal;
   return (
@@ -12,13 +12,22 @@ const CustomAddFinish =  ({ modal, updateModalValue }) => {
       {addCoinSuccess
         ? (
           <View style={{ justifyContent: 'center', alignItems: 'center', flexGrow: 1 }}>
-            <Text style={{ fontSize: 25, color: 'yellow' }}>Congrats !</Text>
-            <Text style={{ color: 'yellow' }}> 15 coins added in your account.</Text>
-            <View style={{ marginTop: 50 }}>
+            <Text style={{ fontSize: 25, color: 'green' }}>Congrats !</Text>
+            <Text style={{ color: 'green' }}> 15 coins added in your account.</Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <Button
+                success
+                onPress={() => addCoinHandler()}
+                style={[styles.buttonStyle]}
+              >
+                <Text style={{ color: 'white' }}>Get More Coins</Text>
+              </Button>
+              <Button
+                danger
                 onPress={() => updateModalValue('modalAddCoinShow', false)}
-                style={{ justifyContent: 'center', alignItems: 'center', height: 50, width: 50, backgroundColor: 'yellow' }}>
-                <Text>Ok</Text>
+                style={[styles.buttonStyle]}
+              >
+                <Text style={{ color: 'white' }}>Close</Text>
               </Button>
             </View>
           </View>)
@@ -38,8 +47,11 @@ const styles = StyleSheet.create({
   videoStyle: {
     height: SCREEN_HEIGHT * 0.4,
     width: SCREEN_WIDTH * 0.9,
-    backgroundColor: APP_COLOR,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  buttonStyle: {
+    padding: 5,
+    margin: 20,
   },
 });
